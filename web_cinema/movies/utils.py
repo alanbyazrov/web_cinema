@@ -46,7 +46,7 @@ def get_popular_movies(limit=10):
 
 def calculate_item_similarity(movie1, movie2):
     """
-    Вычисляет item-based схожесть между двумя фильмами
+    Вычисляет схожесть между двумя фильмами
     на основе оценок пользователей
     """
     # Пользователи, которые оценили оба фильма
@@ -77,7 +77,7 @@ def calculate_item_similarity(movie1, movie2):
     return similarity
 
 
-def get_contextual_recommendations(movie, user, limit=5):
+def get_similar_movies(movie, user, limit=5):
     """
     Контекстные рекомендации для страницы фильма
     Гибридный подход: item-based + жанровое пересечение

@@ -6,7 +6,7 @@ from django.urls import reverse
 
 from movies.models import Genre, Movie, Review, UserPreferences
 from movies.utils import get_new_movies, get_recommendations, get_trending_movies
-from movies.utils import get_contextual_recommendations
+from movies.utils import get_similar_movies
 
 
 def home(request):
@@ -80,7 +80,7 @@ def movie_detail(request, movie_id):
     )
 
     # Похожие фильмы (используем улучшенный item-based подход)
-    similar_movies = get_contextual_recommendations(movie, request.user, limit=4)
+    similar_movies = get_similar_movies(movie, request.user, limit=4)
 
     return render(
         request,

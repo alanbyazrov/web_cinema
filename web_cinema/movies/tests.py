@@ -193,10 +193,10 @@ class UtilsTest(TestCase):
         # Функция возвращает QuerySet, а не list
         self.assertTrue(hasattr(popular_movies, '__iter__'))
 
-    def test_get_contextual_recommendations(self):
-        from movies.utils import get_contextual_recommendations
+    def test_get_similar_movies(self):
+        from movies.utils import get_similar_movies
 
-        similar_movies = get_contextual_recommendations(self.movie, self.user, 3)
+        similar_movies = get_similar_movies(self.movie, self.user, 3)
         self.assertIsNotNone(similar_movies)
         # Функция возвращает list
         self.assertIsInstance(similar_movies, list)
