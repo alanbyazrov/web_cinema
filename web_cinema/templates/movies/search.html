@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1 class="mb-4">🔍 Поиск фильмов</h1>
+
+<!-- Форма поиска -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-4">
+                <input type="text" name="q" class="form-control" placeholder="Название фильма"
+                       value="{{ query }}">
+            </div>
+            <div class="col-md-2">
+                <select name="genre" class="form-select">
+                    <option value="">Все жанры</option>
+                    {% for genre in genres %}
+                    <option value="{{ genre.name }}" {% if request.GET.genre == genre.name %}selected{% endif %}>
+                        {{ genre.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="year" class="form-control" placeholder="Год"
+                       value="{{ request.GET.year }}">
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="country" class="form-control" placeholder="Страна"
+                       value="{{ request.GET.country }}">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Искать</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Результаты поиска -->
+{% if query or request.GET.genre or request.GET.year or request.GET.country %}
+<h5 class="mb-3">
+    Результаты поиска
+    {% if movies.count > 0 %}(найдено {{ movies.count }} фильмов){% endif %}
+</h5>
+{% endif %}
+
+{% if movies %}
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+    {% for movie in movies %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <img src="{% if movie.image_url %}{{ movie.image_url }}{% else %}{% static 'images/movie-placeholder.jpg' %}{% endif %}"
+                 class="card-img-top" alt="{{ movie.title }}" style="height: 250px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text text-muted">{{ movie.year }} • {{ movie.director }}</p>
+                <div class="mb-2">
+                    {% for genre in movie.genres.all %}
+                    <span class="badge bg-primary me-1">{{ genre.name }}</span>
+                    {% endfor %}
+                </div>
+                <a href="{% url 'movies:movie_detail' movie.id %}" class="btn btn-outline-primary w-100">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% elif query %}
+<div class="text-center py-5">
+    <h4>Ничего не найдено</h4>
+    <p class="text-muted">Попробуйте изменить параметры поиска</p>
+</div>
+{% else %}
+<div class="text-center py-5">
+    <h4>Начните поиск</h4>
+    <p class="text-muted">Введите название фильма или используйте фильтры</p>
+</div>
+{% endif %}
+{% endblock %}

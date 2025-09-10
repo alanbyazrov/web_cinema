@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <!-- Постер фильма -->
+    <div class="col-md-4 mb-4">
+        <img src="{% if movie.image_url %}{{ movie.image_url }}{% else %}{% static 'images/movie-placeholder.jpg' %}{% endif %}"
+             class="img-fluid rounded shadow" alt="{{ movie.title }}">
+    </div>
+
+    <!-- Информация о фильме -->
+    <div class="col-md-8">
+        <h1 class="display-5">{{ movie.title }} ({{ movie.year }})</h1>
+
+        <div class="mb-3">
+            {% if movie.director %}
+            <span class="badge bg-secondary me-2">Режиссер: {{ movie.director }}</span>
+            {% endif %}
+            {% if movie.country %}
+            <span class="badge bg-info me-2">{{ movie.country }}</span>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {% for genre in movie.genres.all %}
+            <span class="badge bg-primary me-1">{{ genre.name }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Рейтинг фильма -->
+        <div class="mb-3">
+            <h5>Оценки:</h5>
+            <div class="d-flex align-items-center gap-3">
+                <span class="fs-5 text-success">👍 {{ like_count }}</span>
+                <span class="fs-5 text-danger">👎 {{ dislike_count }}</span>
+            </div>
+        </div>
+
+        <!-- Описание -->
+        {% if movie.description %}
+        <div class="mb-4">
+            <h5>Описание:</h5>
+            <p class="lead">{{ movie.description }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Форма оценки -->
+        {% if user.is_authenticated %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Ваша оценка</h5>
+
+                {% if user_liked %}
+                <p class="text-success">Вы поставили 👍 этому фильму</p>
+                {% elif user_disliked %}
+                <p class="text-danger">Вы поставили 👎 этому фильму</p>
+                {% endif %}
+
+                <form method="post" action="{% url 'movies:rate_movie' movie.id %}">
+                    {% csrf_token %}
+                    <div class="d-flex gap-2">
+                        {% if user_liked %}
+                            <button type="submit" name="action" value="remove" class="btn btn-outline-secondary">
+                                ❌ Удалить оценку
+                            </button>
+                        {% else %}
+                            <button type="submit" name="action" value="like"
+                                    class="btn {% if user_liked %}btn-success{% else %}btn-outline-success{% endif %}">
+                                👍 Нравится
+                            </button>
+                            <button type="submit" name="action" value="dislike"
+                                    class="btn {% if user_disliked %}btn-danger{% else %}btn-outline-danger{% endif %}">
+                                👎 Не нравится
+                            </button>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Форма отзыва -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Ваш отзыв</h5>
+
+                {% if user_review %}
+                <div class="alert alert-info">
+                    <strong>Ваш текущий отзыв:</strong>
+                    <p class="mb-0">{{ user_review.text }}</p>
+                    <small class="text-muted">Написан: {{ user_review.created_at|date:"d.m.Y H:i" }}</small>
+                </div>
+                {% endif %}
+
+                <form method="post" action="{% url 'movies:add_review' movie.id %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Напишите отзыв:</label>
+                        <textarea name="review_text" class="form-control" rows="4"
+                                  placeholder="Поделитесь вашим мнением о фильме..."
+                                  maxlength="1000">{% if user_review %}{{ user_review.text }}{% endif %}</textarea>
+                        <small class="text-muted">Максимум 1000 символов</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        {% if user_review %}Обновить отзыв{% else %}Добавить отзыв{% endif %}
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <a href="{% url 'users:login' %}" class="alert-link">Войдите</a>, чтобы оценить этот фильм, оставить отзыв и получать рекомендации!
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Отзывы других пользователей -->
+{% if reviews %}
+<div class="mt-5">
+    <h3>Отзывы пользователей</h3>
+    <div class="row">
+        <div class="col-12">
+            {% for review in reviews %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h6 class="card-subtitle text-muted">
+                            Пользователь: {{ review.user.phone }}
+                        </h6>
+                        <small class="text-muted">{{ review.created_at|date:"d.m.Y H:i" }}</small>
+                    </div>
+                    <p class="card-text">{{ review.text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Похожие фильмы -->
+{% if similar_movies %}
+<div class="mt-5">
+    <h3>Похожие фильмы</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for similar_movie in similar_movies %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% if similar_movie.image_url %}{{ similar_movie.image_url }}{% else %}{% static 'images/movie-placeholder.jpg' %}{% endif %}"
+                     class="card-img-top" alt="{{ similar_movie.title }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ similar_movie.title }}</h5>
+                    <p class="card-text text-muted">{{ similar_movie.year }}</p>
+                    <div class="mb-2">
+                        {% for genre in similar_movie.genres.all %}
+                        <span class="badge bg-primary me-1">{{ genre.name }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="{% url 'movies:movie_detail' similar_movie.id %}" class="btn btn-primary">Смотреть</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>🎯 Персональные рекомендации</h1>
+    {% if recommendations %}
+    <a href="{% url 'export:export_recommendations_pdf' %}" class="btn btn-success">
+        📄 Экспорт в PDF
+    </a>
+    {% endif %}
+</div>
+
+<!-- Трендовые фильмы -->
+{% if recommendations or new_movies %}
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="bg-light p-4 rounded">
+            <h3 class="mb-3">🔥 Популярные среди пользователей</h3>
+            <div class="row row-cols-2 row-cols-md-4 g-3">
+                {% for movie in recommendations|slice:":4" %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{% if movie.image_url %}{{ movie.image_url }}{% else %}{% static 'images/movie-placeholder.jpg' %}{% endif %}"
+                             class="card-img-top" alt="{{ movie.title }}" style="height: 150px; object-fit: cover;">
+                        <div class="card-body p-2">
+                            <h6 class="card-title mb-1">{{ movie.title|truncatewords:3 }}</h6>
+                            <small class="text-muted">{{ movie.year }}</small>
+                            <div class="mt-1">
+                                <small class="text-success">👍 {{ movie.liked_by.count }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Основные рекомендации -->
+{% if recommendations %}
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
+    {% for movie in recommendations %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <img src="{% if movie.image_url %}{{ movie.image_url }}{% else %}{% static 'images/movie-placeholder.jpg' %}{% endif %}"
+                 class="card-img-top" alt="{{ movie.title }}" style="height: 250px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text text-muted">{{ movie.year }} • {{ movie.director|default:"Режиссер не указан" }}</p>
+                <div class="mb-2">
+                    {% for genre in movie.genres.all %}
+                    <span class="badge bg-primary me-1">{{ genre.name }}</span>
+                    {% endfor %}
+                </div>
+                <div class="mb-2">
+                    <small class="text-success">👍 {{ movie.liked_by.count }} лайков</small>
+                    <small class="text-muted"> • 📝 {{ movie.review_set.count }} отзывов</small>
+                </div>
+                <a href="{% url 'movies:movie_detail' movie.id %}" class="btn btn-primary w-100">Смотреть</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-5">
+    <h4>Пока нет рекомендаций</h4>
+    <p class="text-muted">Оцените несколько фильмов, чтобы получить персональные рекомендации</p>
+    <a href="{% url 'movies:movie_list' %}" class="btn btn-primary">Смотреть все фильмы</a>
+</div>
+{% endif %}
+
+<!-- Новинки -->
+{% if new_movies %}
+<div class="mt-5">
+    <h2 class="mb-4">🎉 Новинки</h2>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for movie in new_movies %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{% if movie.image_url %}{{ movie.image_url }}{% else %}{% static 'images/movie-placeholder.jpg' %}{% endif %}"
+                     class="card-img-top" alt="{{ movie.title }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text text-muted">{{ movie.year }}</p>
+                    <div class="mb-2">
+                        <small class="text-success">👍 {{ movie.liked_by.count }} лайков</small>
+                    </div>
+                    <a href="{% url 'movies:movie_detail' movie.id %}" class="btn btn-outline-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}

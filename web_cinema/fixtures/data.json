@@ -1,0 +1,775 @@
+[
+  {
+    "model": "movies.genre",
+    "pk": 1,
+    "fields": {
+      "name": "Драма"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 2,
+    "fields": {
+      "name": "Комедия"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 3,
+    "fields": {
+      "name": "Боевик"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 4,
+    "fields": {
+      "name": "Фантастика"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 5,
+    "fields": {
+      "name": "Триллер"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 6,
+    "fields": {
+      "name": "Мелодрама"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 7,
+    "fields": {
+      "name": "Приключения"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 8,
+    "fields": {
+      "name": "Ужасы"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 9,
+    "fields": {
+      "name": "Детектив"
+    }
+  },
+  {
+    "model": "movies.genre",
+    "pk": 10,
+    "fields": {
+      "name": "Исторический"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+      "title": "Побег из Шоушенка",
+      "description": "Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.",
+      "year": 1994,
+      "director": "Фрэнк Дарабонт",
+      "country": "США",
+      "image_url": "https://avatars.mds.yandex.net/i?id=21aa743edbcb47735d14ba6acb17bcef_l-5250851-images-thumbs&n=13",
+      "genres": [
+        1,
+        5
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 2,
+    "fields": {
+      "title": "Крёстный отец",
+      "description": "Криминальная сага, повествующая о нью-йоркской сицилийской мафиозной семье Корлеоне. Фильм охватывает период 1945-1955 годов.",
+      "year": 1972,
+      "director": "Фрэнсис Форд Коппола",
+      "country": "США",
+      "image_url": "https://www.pravilamag.ru/upload/img_cache/5e8/5e8ae2e863229f244e031f8236f7b1f7_cropped_510x386.webp",
+      "genres": [
+        1,
+        9
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 3,
+    "fields": {
+      "title": "Тёмный рыцарь",
+      "description": "Бэтмен поднимает ставки в войне с криминалом. С помощью лейтенанта Джима Гордона и прокурора Харви Дента он намерен очистить улицы от преступности, отравляющей город.",
+      "year": 2008,
+      "director": "Кристофер Нолан",
+      "country": "США",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMjA5ODU3NTI0Ml5BMl5BanBnXkFtZTcwODczMTk2Mw@@._V1_.jpg",
+      "genres": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 4,
+    "fields": {
+      "title": "Криминальное чтиво",
+      "description": "Двое бандитов Винсент Вега и Джулс Винфилд ведут философские беседы в перерывах между разборками и решением проблем с должниками криминального босса Марселласа Уоллеса.",
+      "year": 1994,
+      "director": "Квентин Тарантино",
+      "country": "США",
+      "image_url": "https://cdn.iz.ru/sites/default/files/styles/1920x1080/public/article-2021-11/7%20copy.jpg?itok=1YsSoStr",
+      "genres": [
+        5,
+        9
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 5,
+    "fields": {
+      "title": "Форрест Гамп",
+      "description": "От лица главного героя Форреста Гампа, слабоумного безобидного человека с благородным и открытым сердцем, рассказывается история его необыкновенной жизни.",
+      "year": 1994,
+      "director": "Роберт Земекис",
+      "country": "США",
+      "image_url": "https://avatars.mds.yandex.net/i?id=9a892c92cbe9e9ad2030a4440f349c52_l-10933813-images-thumbs&n=13",
+      "genres": [
+        1,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 6,
+    "fields": {
+      "title": "Начало",
+      "description": "Кобб — талантливый вор, лучший из лучших в опасном искусстве извлечения: он крадет ценные секреты из глубин подсознания во время сна, когда человеческий разум наиболее уязвим.",
+      "year": 2010,
+      "director": "Кристофер Нолан",
+      "country": "США",
+      "image_url": "https://i.ytimg.com/vi/TOmhooJhYnk/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGEogYyhlMA8=&amp;rs=AOn4CLBRpQsLoG62lgzH_yHMHjnl6c2e3w",
+      "genres": [
+        4,
+        5,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 7,
+    "fields": {
+      "title": "Матрица",
+      "description": "Хакер Нео узнает, что его мир — виртуальная реальность, созданная могущественными машинами, чтобы подчинить и усмирить человечество.",
+      "year": 1999,
+      "director": "Лана Вачовски",
+      "country": "США",
+      "image_url": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2021/10/matrix-reloaded-2505989.jpg?tf=3840x",
+      "genres": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 8,
+    "fields": {
+      "title": "Список Шиндлера",
+      "description": "История немецкого промышленника Оскара Шиндлера, который спас во время Второй мировой войны более тысячи евреев.",
+      "year": 1993,
+      "director": "Стивен Спилберг",
+      "country": "США",
+      "image_url": "https://i.pinimg.com/736x/04/02/07/04020745c415e9eb1e62fca3e8a52fce.jpg",
+      "genres": [
+        1,
+        10
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 9,
+    "fields": {
+      "title": "Властелин колец: Братство Кольца",
+      "description": "Сказание о Братстве Кольца, которое отправляется в опасный путь, чтобы уничтожить Кольцо Всевластия.",
+      "year": 2001,
+      "director": "Питер Джексон",
+      "country": "Новая Зеландия",
+      "image_url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/0c9ff89a-5c55-4e75-8aaf-4e4b6f6c2752/300x450",
+      "genres": [
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 10,
+    "fields": {
+      "title": "Бойцовский клуб",
+      "description": "Страдающий от бессонницы клерк встречает неординарного торговца мылом и вместе они основывают подпольный бойцовский клуб.",
+      "year": 1999,
+      "director": "Дэвид Финчер",
+      "country": "США",
+      "image_url": "https://i.pinimg.com/originals/b7/2b/3c/b72b3c2805d6e347096b0bdcc30168a7.jpg",
+      "genres": [
+        1,
+        5
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 11,
+    "fields": {
+      "title": "Звёздные войны: Империя наносит ответный удар",
+      "description": "Продолжение саги о Люке Скайуокере и повстанческом альянсе в борьбе против Галактической Империи.",
+      "year": 1980,
+      "director": "Джордж Лукас",
+      "country": "США",
+      "image_url": "https://www.film.ru/sites/default/files/images/Star%20Wars-%20Episode%20V%20-%20The%20Empire%20Strikes%20Back.jpg",
+      "genres": [
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 12,
+    "fields": {
+      "title": "Инопланетянин",
+      "description": "Маленький мальчик находит и прячет у себя дома инопланетянина, пытаясь помочь ему вернуться домой.",
+      "year": 1982,
+      "director": "Стивен Спилберг",
+      "country": "США",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNzQyZjg4NTQtN2RkYy00MzY1LWI2NmMtYTI2ZmY5NDZmYTUzXkEyXkFqcGc@._V1_.jpg",
+      "genres": [
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 13,
+    "fields": {
+      "title": "Терминатор 2: Судный день",
+      "description": "Кибернетический организм из будущего прибывает в наше время, чтобы защитить Джона Коннора от нового терминатора.",
+      "year": 1991,
+      "director": "Джеймс Кэмерон",
+      "country": "США",
+      "image_url": "https://s00.yaplakal.com/pics/pics_original/9/6/3/14522369.jpg",
+      "genres": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 14,
+    "fields": {
+      "title": "Красота по-американски",
+      "description": "История о кризисе среднего возраста и поиске счастья в пригороде Америки.",
+      "year": 1999,
+      "director": "Сэм Мендес",
+      "country": "США",
+      "image_url": "https://avatars.dzeninfra.ru/get-zen_doc/235144/pub_5fa6ee0347a34812ce308741_5fa6ee44b1fbcf2e235a597c/scale_1200",
+      "genres": [
+        1,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 15,
+    "fields": {
+      "title": "Пролетая над гнездом кукушки",
+      "description": "Пациент психиатрической клиники пытается изменить устоявшиеся порядки больницы.",
+      "year": 1975,
+      "director": "Милош Форман",
+      "country": "США",
+      "image_url": "https://i.pinimg.com/originals/06/cc/15/06cc154ec6dbe889a5df49160956a9b0.jpg",
+      "genres": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 16,
+    "fields": {
+      "title": "Хороший, плохой, злой",
+      "description": "Трое бандитов ищут спрятанные деньги во время Гражданской войны в Америке.",
+      "year": 1966,
+      "director": "Серджо Леоне",
+      "country": "Италия",
+      "image_url": "https://i.pinimg.com/originals/07/7b/a5/077ba562e01be8fff980d1bb711e38f2.jpg",
+      "genres": [
+        3,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 17,
+    "fields": {
+      "title": "Китайский квартал",
+      "description": "Частный детектив расследует сложное дело, связанное с водой и коррупцией в Лос-Анджелесе.",
+      "year": 1974,
+      "director": "Роман Полански",
+      "country": "США",
+      "image_url": "https://images.kinorium.com/movie/shot/66259/h280_48989171.jpg",
+      "genres": [
+        5,
+        9
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 18,
+    "fields": {
+      "title": "Космическая одиссея 2001 года",
+      "description": "Эпическое путешествие человечества от зарождения разума до космических исследований.",
+      "year": 1968,
+      "director": "Стэнли Кубрик",
+      "country": "США",
+      "image_url": "https://img.ixbt.site/live/images/original/35/79/76/2024/10/11/b9f3b8c0d2.jpg",
+      "genres": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 19,
+    "fields": {
+      "title": "Сияние",
+      "description": "Писатель с семьей становится смотрителем отеля, где на него влияют сверхъестественные силы.",
+      "year": 1980,
+      "director": "Стэнли Кубрик",
+      "country": "США",
+      "image_url": "https://cdn1.ntv.com.tr/gorsel/zKSIA7SroEmilf_AMrnPzw.jpg?width=952&amp;height=540&amp;mode=both&amp;scale=both",
+      "genres": [
+        5,
+        8
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 20,
+    "fields": {
+      "title": "Таксист",
+      "description": "Ветеран Вьетнама работает таксистом в Нью-Йорке и постепенно сходит с ума от насилия в городе.",
+      "year": 1976,
+      "director": "Мартин Скорсезе",
+      "country": "США",
+      "image_url": "https://www.nashe.ru/uploads/photos/1/2021/11/%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D1%8B/cc6294b55dadf4211b23f0e3f9b8ea19.jpeg",
+      "genres": [
+        1,
+        5
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 21,
+    "fields": {
+      "title": "Иван Васильевич меняет профессию",
+      "description": "Инженер изобретает машину времени, и царь Иван Грозный оказывается в современной Москве.",
+      "year": 1973,
+      "director": "Леонид Гайдай",
+      "country": "СССР",
+      "image_url": "https://image.mel.fm/i/M/MllTJCGoXX/1200.jpg",
+      "genres": [
+        2,
+        4
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 22,
+    "fields": {
+      "title": "Бриллиантовая рука",
+      "description": "Неудачливый советский гражданин случайно становится контрабандистом.",
+      "year": 1968,
+      "director": "Леонид Гайдай",
+      "country": "СССР",
+      "image_url": "https://avatars.mds.yandex.net/get-mpic/4725655/2a0000019304cb547f4709d8ec3f199ec126/orig",
+      "genres": [
+        2,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 23,
+    "fields": {
+      "title": "Операция «Ы» и другие приключения Шурика",
+      "description": "Три истории о приключениях студента Шурика.",
+      "year": 1965,
+      "director": "Леонид Гайдай",
+      "country": "СССР",
+      "image_url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/8ac5e4a2-2717-416d-8ec1-c860813a70c1/orig",
+      "genres": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 24,
+    "fields": {
+      "title": "Москва слезам не верит",
+      "description": "История трех подруг, приехавших в Москву в 1950-х годах и их судьбы через 20 лет.",
+      "year": 1979,
+      "director": "Владимир Меньшов",
+      "country": "СССР",
+      "image_url": "https://i.pinimg.com/736x/11/96/59/119659e20c0cbc32198a6ca575e4cdc8.jpg",
+      "genres": [
+        1,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 25,
+    "fields": {
+      "title": "Любовь и голуби",
+      "description": "Простой деревенский мужик влюбляется в курортную роковую женщину.",
+      "year": 1984,
+      "director": "Владимир Меньшов",
+      "country": "СССР",
+      "image_url": "https://img.gazeta.ru/files3/178/20716178/upload-00125176-pic_32ratio_900x600-900x600-66122.jpg",
+      "genres": [
+        2,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 26,
+    "fields": {
+      "title": "Джентльмены удачи",
+      "description": "Заведующий детсадом похож на опасного преступника, и его просят помочь милиции.",
+      "year": 1971,
+      "director": "Александр Серый",
+      "country": "СССР",
+      "image_url": "https://static.kinoafisha.info/k/articles/1200/upload/articles/537306307739.jpg",
+      "genres": [
+        2,
+        9
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 27,
+    "fields": {
+      "title": "Служебный роман",
+      "description": "Начальница и ее подчиненный обнаруживают, что у них много общего.",
+      "year": 1977,
+      "director": "Эльдар Рязанов",
+      "country": "СССР",
+      "image_url": "https://blog.okko.tv/thumb/1720x0/filters:quality(75):no_upscale()/imgs/2023/12/01/08/6251676/eb7eab225298981dfcd71b6183ea58379b13b594.jpg",
+      "genres": [
+        2,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 28,
+    "fields": {
+      "title": "Ирония судьбы, или С лёгким паром!",
+      "description": "Мужчина по ошибке прилетает в Ленинград вместо Москвы и попадает в квартиру незнакомой женщины.",
+      "year": 1975,
+      "director": "Эльдар Рязанов",
+      "country": "СССР",
+      "image_url": "https://i.pinimg.com/736x/d0/66/f7/d066f7fd13e7447db427cd967de4793d.jpg",
+      "genres": [
+        2,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 29,
+    "fields": {
+      "title": "Гарри Поттер и философский камень",
+      "description": "Мальчик-сирота узнает, что он волшебник и отправляется в школу магии Хогвартс.",
+      "year": 2001,
+      "director": "Крис Коламбус",
+      "country": "Великобритания",
+      "image_url": "https://ru-images-s.kinorium.com/movie/1080/195927.jpg?1588851783",
+      "genres": [
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 30,
+    "fields": {
+      "title": "В поисках Немо",
+      "description": "Рыбка-клоун отправляется на поиски своего сына, которого поймали аквалангисты.",
+      "year": 2003,
+      "director": "Эндрю Стэнтон",
+      "country": "США",
+      "image_url": "https://cdn.lifehacker.ru/wp-content/uploads/2020/12/a36460ee0267706961e81fdfd8421daa_1608680778-scaled-e1608680798442-2048x1024.jpg",
+      "genres": [
+        2,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 31,
+    "fields": {
+      "title": "Король Лев",
+      "description": "Молодой львенок Симба познает истинный смысл ответственности и мужества.",
+      "year": 1994,
+      "director": "Роджер Аллерс",
+      "country": "США",
+      "image_url": "https://i.pinimg.com/originals/be/05/55/be05554a31c899eb0fcd275389f2aa7c.png",
+      "genres": [
+        1,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 32,
+    "fields": {
+      "title": "Титаник",
+      "description": "Молодые влюбленные Джек и Роза находят друг друга на борту обреченного лайнера.",
+      "year": 1997,
+      "director": "Джеймс Кэмерон",
+      "country": "США",
+      "image_url": "https://i.pinimg.com/originals/cf/e9/88/cfe9882461423b311b5bd674ce457a0b.jpg",
+      "genres": [
+        1,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 33,
+    "fields": {
+      "title": "Аватар",
+      "description": "Бывший морпех становится частью программы по освоению Пандоры, планеты с разумной жизнью.",
+      "year": 2009,
+      "director": "Джеймс Кэмерон",
+      "country": "США",
+      "image_url": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1xwSpE.img?w=3345&h=1882&m=4&q=70",
+      "genres": [
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 34,
+    "fields": {
+      "title": "Пираты Карибского моря: Проклятие Чёрной жемчужины",
+      "description": "Эксцентричный пиджек Джек Воробей помогает кузнецу спасти свою возлюбленную от пиратов-скелетов.",
+      "year": 2003,
+      "director": "Гор Вербински",
+      "country": "США",
+      "image_url": "https://pic.rutubelist.ru/video/99/35/9935ee154f88f1f3380793a42fbdbe80.jpg",
+      "genres": [
+        3,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 35,
+    "fields": {
+      "title": "Назад в будущее",
+      "description": "Подросток Марти Макфлай случайно отправляется в прошлое на машине времени, созданной его другом.",
+      "year": 1985,
+      "director": "Роберт Земекис",
+      "country": "США",
+      "image_url": "https://naked-science.ru/wp-content/uploads/2021/06/back-to-the-future-1200-1200-675-675-crop-000000.jpg",
+      "genres": [
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 36,
+    "fields": {
+      "title": "Один дома",
+      "description": "Мальчик случайно остается один дома и защищает свой дом от грабителей.",
+      "year": 1990,
+      "director": "Крис Коламбус",
+      "country": "США",
+      "image_url": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1wEPCd.img?w=980&h=654&m=4&q=50",
+      "genres": [
+        2,
+        7
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 37,
+    "fields": {
+      "title": "Челюсти",
+      "description": "Гигантская белая акула терроризирует курортный городок, и трое мужчин отправляются на ее поимку.",
+      "year": 1975,
+      "director": "Стивен Спилберг",
+      "country": "США",
+      "image_url": "https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_685683e4c522900180611b38_68568c469674506b1fb2c0d3/scale_1200",
+      "genres": [
+        5,
+        8
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 38,
+    "fields": {
+      "title": "Рокки",
+      "description": "Неизвестный боксер получает шанс сразиться за титул чемпиона мира.",
+      "year": 1976,
+      "director": "Джон Эвилдсен",
+      "country": "США",
+      "image_url": "https://img.championat.com/s/1350x900/news/big/q/z/o-sozdanii-rokki-s-silvestrom-stallone-snimut-hudozhestvennyj-film_1715143924924362726.jpg",
+      "genres": [
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 39,
+    "fields": {
+      "title": "Трудности перевода",
+      "description": "Американский актер и молодая выпускница колледжа знакомятся в Токио и находят утешение в дружбе.",
+      "year": 2003,
+      "director": "София Коппола",
+      "country": "США",
+      "image_url": "https://0d314c86-f76b-45cc-874e-45816116a667.selcdn.net/b9f292ab-4762-4bae-82c0-b52d19ecbc1f.jpg",
+      "genres": [
+        1,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 40,
+    "fields": {
+      "title": "Достучаться до небес",
+      "description": "Двое смертельно больных мужчин сбегают из больницы и отправляются в последнее путешествие.",
+      "year": 1997,
+      "director": "Томас Ян",
+      "country": "Германия",
+      "image_url": "https://i.ytimg.com/vi/sJ_MsAuGTTA/maxresdefault.jpg",
+      "genres": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 41,
+    "fields": {
+      "title": "Леон",
+      "description": "Профессиональный убийца берет под свою опеку девочку, чью семью убили коррумпированные полицейские.",
+      "year": 1994,
+      "director": "Люк Бессон",
+      "country": "Франция",
+      "image_url": "https://cs14.pikabu.ru/post_img/2023/12/25/9/og_og_1703516384239198796.jpg",
+      "genres": [
+        3,
+        5
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 42,
+    "fields": {
+      "title": "Амели",
+      "description": "Молодая парижанка решает менять жизни окружающих к лучшему.",
+      "year": 2001,
+      "director": "Жан-Пьер Жене",
+      "country": "Франция",
+      "image_url": "https://i.pinimg.com/originals/f9/b1/39/f9b139e619ccb1e0fece9608aa45becc.jpg",
+      "genres": [
+        2,
+        6
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 43,
+    "fields": {
+      "title": "1+1",
+      "description": "Парализованный аристократ нанимает в сиделки бывшего заключенного.",
+      "year": 2011,
+      "director": "Оливье Накаш",
+      "country": "Франция",
+      "image_url": "https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_670fa086609483307cd42f51_670fa138d545ad0b5592ddca/scale_1200",
+      "genres": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 44,
+    "fields": {
+      "title": "Отступники",
+      "description": "Полицейский внедряется в ирландскую мафию, пока мафиози учится в полицейской академии.",
+      "year": 2006,
+      "director": "Мартин Скорсезе",
+      "country": "США",
+      "image_url": "https://avatars.mds.yandex.net/get-mpic/2991631/2a00000192646ca129c8bec9a54661cc622d/orig",
+      "genres": [
+        1,
+        2
+      ]
+    }
+  }
+]

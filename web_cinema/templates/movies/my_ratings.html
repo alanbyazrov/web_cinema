@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">⭐ Мои оценки</h1>
+
+{% if ratings %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Фильм</th>
+                <th>Оценка</th>
+                <th>Дата оценки</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rating in ratings %}
+            <tr>
+                <td>
+                    <a href="{% url 'movies:movie_detail' rating.movie.id %}" class="text-decoration-none">
+                        {{ rating.movie.title }} ({{ rating.movie.year }})
+                    </a>
+                </td>
+                <td>
+                    <span class="badge bg-warning text-dark fs-6">
+                        {{ rating.rating }} ⭐
+                    </span>
+                </td>
+                <td>{{ rating.created_at|date:"d.m.Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'movies:movie_detail' rating.movie.id %}" class="btn btn-sm btn-outline-primary">
+                        Изменить оценку
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="text-center py-5">
+    <h4>У вас пока нет оценок</h4>
+    <p class="text-muted">Начните оценивать фильмы, чтобы получать персональные рекомендации</p>
+    <a href="{% url 'movies:movie_list' %}" class="btn btn-primary">Смотреть все фильмы</a>
+</div>
+{% endif %}
+{% endblock %}

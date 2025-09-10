@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Герой секция -->
+<div class="hero-section bg-dark text-white py-5 mb-5 rounded">
+    <div class="container text-center">
+        <h1 class="display-4 mb-4">🎬 Найди свой идеальный фильм</h1>
+        <p class="lead mb-4">Персональные рекомендации на основе ваших предпочтений</p>
+        {% if not user.is_authenticated %}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a href="{% url 'users:signup' %}" class="btn btn-primary btn-lg me-md-2">Начать сейчас</a>
+            <a href="{% url 'users:login' %}" class="btn btn-outline-light btn-lg">Войти</a>
+        </div>
+        {% else %}
+        <a href="{% url 'movies:recommendations' %}" class="btn btn-primary btn-lg">Мои рекомендации</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Популярные фильмы -->
+<section class="mb-5">
+    <h2 class="mb-4">🔥 Популярные фильмы</h2>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for movie in popular_movies %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{% if movie.image_url %}{{ movie.image_url }}{% else %}{% static 'images/movie-placeholder.jpg' %}{% endif %}"
+                     class="card-img-top" alt="{{ movie.title }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text text-muted">{{ movie.year }} • {{ movie.director }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            {% if movie.avg_rating %}
+                            ⭐ {{ movie.avg_rating|floatformat:1 }}
+                            {% else %}
+                            Еще нет оценок
+                            {% endif %}
+                        </small>
+                        <a href="{% url 'movies:movie_detail' movie.id %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Новинки -->
+<section class="mb-5">
+    <h2 class="mb-4">🎉 Новинки</h2>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for movie in new_movies %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{% if movie.image_url %}{{ movie.image_url }}{% else %}{% static 'img/movie-placeholder.jpg' %}{% endif %}"
+                     class="card-img-top" alt="{{ movie.title }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text text-muted">{{ movie.year }} • {{ movie.director }}</p>
+                    <a href="{% url 'movies:movie_detail' movie.id %}" class="btn btn-sm btn-outline-primary">Смотреть</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Преимущества -->
+<section class="bg-light py-5 rounded">
+    <div class="container">
+        <h2 class="text-center mb-5">Почему выбирают нас?</h2>
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon mb-3">🎯</div>
+                <h4>Персональные рекомендации</h4>
+                <p>Фильмы подобраны специально для вас на основе ваших предпочтений</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon mb-3">⭐</div>
+                <h4>Умный алгоритм</h4>
+                <p>Система учится на ваших оценках и улучшает рекомендации</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon mb-3">🔍</div>
+                <h4>Удобный поиск</h4>
+                <p>Находите фильмы по жанру, году, стране и режиссеру</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

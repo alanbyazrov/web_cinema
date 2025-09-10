@@ -1,0 +1,121 @@
+<!-- templates/export/import_csv.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">📁 Импорт фильмов из CSV</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <h5>📋 Формат CSV файла:</h5>
+                    <p class="mb-1">Разделитель: <strong>точка с запятой (;)</strong></p>
+                    <p class="mb-1">Кодировка: <strong>UTF-8</strong></p>
+                    <p class="mb-0">Заголовок: <code>title;description;year;director;country;image_url;genres</code></p>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h6>⚠️ Важно:</h6>
+                    <ul class="mb-0">
+                        <li>Фильмы с одинаковым названием и годом будут пропущены</li>
+                        <li>Жанры указываются через запятую (например: "Драма,Комедия")</li>
+                        <li>Максимальный размер файла: 5MB</li>
+                    </ul>
+                </div>
+
+                <form method="post" enctype="multipart/form-data" class="mt-4">
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+                        <label for="csv_file" class="form-label">CSV файл для импорта:</label>
+                        <input type="file" name="csv_file" id="csv_file"
+                               class="form-control" accept=".csv" required>
+                        <div class="form-text">
+                            Поддерживаются только файлы .csv с разделителем ";"
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            📤 Импортировать CSV
+                        </button>
+                    </div>
+                </form>
+
+                <hr class="my-4">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5>📝 Пример CSV:</h5>
+                                <pre class="bg-dark text-light p-3 small">
+title;description;year;director;country;image_url;genres
+"Зеленая миля";"История о тюремном надзирателе...";1999;"Фрэнк Дарабонт";"США";"http://example.com/image.jpg";"Драма,Фэнтези"
+"Побег из Шоушенка";"Два заключенных заводят дружбу...";1994;"Фрэнк Дарабонт";"США";"http://example.com/image2.jpg";"Драма"
+"Форрест Гамп";"История человека с низким IQ...";1994;"Роберт Земекис";"США";"http://example.com/image3.jpg";"Драма,Комедия,Мелодрама"</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5>📊 Статистика импорта:</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Всего фильмов в базе: <strong>{{ movie_count }}</strong></li>
+                                    <li class="list-group-item">Всего жанров в базе: <strong>{{ genre_count }}</strong></li>
+                                </ul>
+                                <div class="mt-3">
+                                    <a href="{% url 'movies:movie_list' %}" class="btn btn-outline-primary btn-sm">
+                                        Посмотреть все фильмы
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if messages %}
+        <div class="mt-3">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('csv_file');
+
+    fileInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            // Проверка размера файла (5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('Файл слишком большой! Максимальный размер: 5MB');
+                this.value = '';
+                return;
+            }
+
+            // Проверка расширения
+            if (!file.name.toLowerCase().endsWith('.csv')) {
+                alert('Пожалуйста, выберите файл с расширением .csv');
+                this.value = '';
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
